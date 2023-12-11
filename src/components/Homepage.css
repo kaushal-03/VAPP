@@ -1,0 +1,34 @@
+/* Homepage.css */
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:wght@600&display=swap');
+.Main {
+    width: 100%;
+    height: 90vh; /* 100% of the viewport height */
+    background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
+    display: flex;
+  }
+  
+  .Sidebox {
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);
+    /* Additional styles for the Sidebox */
+  }
+  .landingpage
+  {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #F2F1EB;
+    width: 100%;
+  }
+
+  .mainname
+  {
+    font-family: 'Rethink Sans', sans-serif;
+    font-size: 100px;
+  }
+  .motto
+  {
+    font-size: 30px;
+  }

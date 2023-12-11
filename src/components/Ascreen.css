@@ -1,0 +1,172 @@
+.mains
+{
+    height: 100vh;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.controls1 
+{
+    background-color: #E5CFF7;
+    width:100%;
+    height:80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    
+   
+}
+.form-group select
+{
+    border-radius: 15px;;
+}
+
+.controls1 label {
+    font-weight: bold;
+  }
+
+.form-groupp
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sd
+{
+    width:40%;
+    height:400px;
+}
+.controls2
+{
+       
+    width:100%;
+    height:500px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    
+}
+
+  #dropdown {
+        font-size: 14px; /* Change the font size */
+        padding: 8px; /* Add padding to increase the size */
+        border: 2px solid #B6BBC4;
+      }
+
+
+.sbar
+{
+    background-color: #E5CFF7;
+    height: 100vh;
+    width:80px;
+    display: flex;
+    justify-content: center;
+    padding-top: 8px;
+   
+
+}
+.logo1
+{
+    width:80%;
+    height:10%;
+}
+.mmain
+{
+    display: flex;
+    width: 100%;
+    background-color: #F1EFEF;  
+    
+}
+
+.ricon
+{
+    width: 30px;
+    height: 30px;
+}
+
+
+/* CSS */
+.button-28 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #B6BBC4;
+  border: none;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #3B3B3B;
+  cursor: pointer;
+  font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 25px;
+  height:7px;
+  will-change: transform;
+
+}
+
+.button-28:disabled {
+  pointer-events: none;
+}
+
+.button-28:hover {
+  color: #fff;
+  background-color: #9BB8CD;
+    
+}
+    
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+.choose
+{
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:10px
+}
+
+.cbtn
+{
+    height:40px;
+    width: 40px;
+    border: none;
+    border-radius: 15px;
+    background-color: #EEF5FF;
+}
+.cimg
+{
+    height: 20px;
+    width: 20px;
+}
+
+.cbtn:hover .cimg {
+    animation: bounce 0.5s cubic-bezier(0.28, 0.84, 0.42, 1) both;
+  }
+.idiv
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+  
