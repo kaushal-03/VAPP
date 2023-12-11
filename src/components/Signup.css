@@ -1,0 +1,114 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+* {
+	box-sizing: border-box;
+}
+
+
+
+.h1iu {
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+}
+
+p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+span {
+	font-size: 12px;
+}
+
+.aiu {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+}
+
+.buttoniu {
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+.buttoniu:active {
+	transform: scale(0.95);
+}
+.buttoniu:focus {
+	outline: none;
+}
+.buttoniu.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+.formu{
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	width: 45%;
+	height: 70%;
+	text-align: center;
+	border-radius: 50px;
+	
+}
+
+.inputiu {
+	background-color: #F2F1EB;
+	border: none;
+    border-radius: 20px;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 70%;
+}
+
+
+.social-container {
+	margin: 20px 0;
+}
+
+.social-container a {
+	border: 1px solid #DDDDDD;
+	border-radius: 50%;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 5px;
+	height: 40px;
+	width: 40px;
+}
+
+
+.iumaidiv1
+{
+    background-color: white;
+    height: 100vh;
+    width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+}
+.simg
+{
+	width:40%
+}

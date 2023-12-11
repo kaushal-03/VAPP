@@ -1,0 +1,10 @@
+.almain
+{
+    width: 100%;
+    background-color: #F2F1EB;
+    height:91vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:60px
+}

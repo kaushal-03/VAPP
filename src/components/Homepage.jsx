@@ -5,9 +5,6 @@ const Homepage = () => {
   return (
     <div className='Main'>
 
-      <div className='Sidebox'>
-       <Sidebar/>
-      </div>
       <div className='landingpage'>
       <div className='mainname'>
         Welcome to VAPP
