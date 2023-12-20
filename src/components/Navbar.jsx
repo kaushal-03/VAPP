@@ -25,17 +25,43 @@ const Navbar = () => {
           <div>
             <li className="navbar-dropdown">
               <a href="#">
-                Services{" "}
+                Solutions{" "}
                 <img src={dropdown} alt="License Management" className="down" />
               </a>
               <div className="dropdown">
                 <a href="#">License Management</a>
                 <a href="#">SOD</a>
-                <a href="#">User Management</a>
+                <a href="#">User Administration</a>
+                <a href="#">Integration</a>
               </div>
             </li>
           </div>
-          
+          <div>
+            <li className="navbar-dropdown">
+              <a href="#">
+                Services{" "}
+                <img src={dropdown} alt="License Management" className="down" />
+              </a>
+              <div className="dropdown">
+                <a href="#">License Audit</a>
+                <a href="#">ITGC Audit</a>
+                <a href="#">Business Process Optimization</a>
+              </div>
+            </li>
+          </div>
+          <div>
+            <li className="navbar-dropdown">
+              <a href="#">
+                CaseStudies{" "}
+                <img src={dropdown} alt="License Management" className="down" />
+              </a>
+              <div className="dropdown">
+                <a href="#">CS1</a>
+                <a href="#">CS2</a>
+                <a href="#">CS3</a>
+              </div>
+            </li>
+          </div>
         </ul>
         <div class="button-div">
             <button class="signup-button"onClick={() => navigate('/signup')} >Signup</button>

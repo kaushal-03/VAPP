@@ -9,6 +9,11 @@ import Signin from './components/Signin';
 import Signup from './components/Signup';
 import Dnavbar from './components/Dnavbar';
 import Alogin from './components/Alogin';
+import Licensetab from './components/Licensetab';
+import Vconnect from './components/Vconnect';
+import Useradmin from './components/Useradmin';
+import SAP from './components/SAP';
+
 function App() {
   const divStyle = {
     width: '100%', 
@@ -19,11 +24,12 @@ function App() {
     <Router>
       <Routes>
       <Route path="/" element={<div className='main' style={divStyle}><Navbar/><Homepage/></div>} />
-      <Route path="/ascreen" element={<Ascreen/>} />
+      <Route path="/License Management" element={<Licensetab/>} />
       <Route path="/configure" element={<Configure/>}/>
       <Route path="/login" element={<Signin/>}/>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/authpage" element={<div className='main' style={divStyle}><Dnavbar/><Alogin/></div>}/>
+      <Route path="Vconnect" element={<SAP/>}/>
       </Routes>
     </Router>
    </div>
