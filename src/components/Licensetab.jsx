@@ -13,7 +13,7 @@ const Licensetab = () => {
   return (
     <div>
     <div className='nnav'>
-    <h1>                Welcome To License Management.</h1>
+    <h1 className='hh1'>Welcome To License Management.</h1>
     <button className='bellbtn' onClick={() => navigate('/configure')}><img src={gear} className='bell'/></button>
     </div>
     <div className='limain'>

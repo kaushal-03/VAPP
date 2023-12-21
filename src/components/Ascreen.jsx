@@ -63,7 +63,7 @@ const Ascreen = () => {
                 <img
                   src={Reset}
                   alt=""
-                  className="cimg"
+                  className="cimgg"
                   onClick={handleButtonClick}
                 />
               </button>
@@ -71,7 +71,7 @@ const Ascreen = () => {
                 <img
                   src={Line}
                   alt=""
-                  className="cimg"
+                  className="cimgg"
                   onClick={() => {
                     SetShowpie(false);
                     SetShowbar(false);
@@ -84,7 +84,7 @@ const Ascreen = () => {
                 <img
                   src={Bar}
                   alt=""
-                  className="cimg"
+                  className="cimgg"
                   onClick={() => {
                     SetShowpie(false);
                     SetShowline(false);
@@ -96,7 +96,7 @@ const Ascreen = () => {
                 <img
                   src={Pie}
                   alt=""
-                  className="cimg"
+                  className="cimgg"
                   onClick={() => {
                     SetShowbar(false);
                     SetShowline(false);
@@ -105,7 +105,7 @@ const Ascreen = () => {
                 />
               </button>
               <button className="cbtn">
-                <img src={Table} alt="" className="cimg" />
+                <img src={Table} alt="" className="cimgg" />
               </button>
             </div>
           )}

@@ -29,7 +29,11 @@ function App() {
       <Route path="/login" element={<Signin/>}/>
       <Route path="/signup" element={<Signup/>}/>
       <Route path="/authpage" element={<div className='main' style={divStyle}><Dnavbar/><Alogin/></div>}/>
-      <Route path="Vconnect" element={<SAP/>}/>
+      <Route path="/Vconnect" element={<Vconnect/>}/>
+      <Route path="/Ascreen" element={<Ascreen/>}/>
+      <Route path="/SOD" element={<SAP/>}/>
+      <Route path="/admin" element={<Useradmin/>}/>
+
       </Routes>
     </Router>
    </div>

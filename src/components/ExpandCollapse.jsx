@@ -42,7 +42,7 @@ const ExpandCollapse = () => {
                   checked={selectedOption1 === "Option A"}
                   onChange={handleOptionChange1}
                 />
-                Option A
+                On Boarding
               </label>
               <br />
               <label>
@@ -52,7 +52,7 @@ const ExpandCollapse = () => {
                   checked={selectedOption1 === "Option B"}
                   onChange={handleOptionChange1}
                 />
-                Option B
+                Off Boarding
               </label>
             </div>
           )}
@@ -72,7 +72,7 @@ const ExpandCollapse = () => {
                   checked={selectedOption2 === "Option 1"}
                   onChange={handleOptionChange2}
                 />
-                Option 1
+                Salesforce
               </label>
               <br />
               <label>
@@ -82,7 +82,7 @@ const ExpandCollapse = () => {
                   checked={selectedOption2 === "Option 2"}
                   onChange={handleOptionChange2}
                 />
-                Option 2
+                Oracle
               </label>
               <br />
               <label>
@@ -92,7 +92,7 @@ const ExpandCollapse = () => {
                   checked={selectedOption2 === "Option 3"}
                   onChange={handleOptionChange2}
                 />
-                Option 3
+                Coupa
               </label>
               <br />
               <label>
@@ -102,7 +102,7 @@ const ExpandCollapse = () => {
                   checked={selectedOption2 === "Option 4"}
                   onChange={handleOptionChange2}
                 />
-                Option 4
+                Netsuite
               </label>
               <br />
               <label>
@@ -112,7 +112,7 @@ const ExpandCollapse = () => {
                   checked={selectedOption2 === "Option 5"}
                   onChange={handleOptionChange2}
                 />
-                Option 5
+                Workday
               </label>
             </div>
           )}

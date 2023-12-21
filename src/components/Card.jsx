@@ -14,6 +14,15 @@ const Card = (props) => {
         {
           navigate('/Vconnect')
         }
+        if(props.heading == "SOD")
+        {
+          navigate('/SOD')
+        }
+        if(props.heading == "User Management")
+        {
+          navigate('/admin')
+        }
+        
         
     }
   return (
