@@ -7,8 +7,27 @@ import salesforce from "../salesforce-logo-cloudcon.png";
 import workday from "../workday.png";
 import Aicon from "../Aicon.png";
 import view from "../view.png";
+import './Dropdowncomp';
+import DropdownComponent from "./Dropdowncomp";
 const Vconnect = () => {
-
+  const [selectedDropdownValues, setSelectedDropdownValues] = useState({});
+  const [selectedSDropdownValues, setSelectedSDropdownValues] = useState({});
+  const handleSelection = (dropdownId, value) => {
+    setSelectedDropdownValues((prevValues) => ({
+      ...prevValues,
+      [dropdownId]: value,
+    }));
+  };
+  const handleSelections = (dropdownId, value) => {
+    setSelectedSDropdownValues((prevValues) => ({
+      ...prevValues,
+      [dropdownId]: value,
+    }));
+  };
+  useEffect(() => {
+  console.log(selectedDropdownValues)
+  console.log(selectedSDropdownValues)
+  }, [selectedDropdownValues,selectedSDropdownValues]);
   const [showAdditionalDiv, setShowAdditionalDiv] = useState(false);
   const toggleAdditionalDiv = () => {
     setShowAdditionalDiv(!showAdditionalDiv);
@@ -19,18 +38,18 @@ const Vconnect = () => {
     { id: 1, name: "Item 1" },
     { id: 2, name: "Item 2" },
     { id: 3, name: "Item 3" },
-    { id: 4, name: "Item 1" },
-    { id: 5, name: "Item 2" },
-    { id: 6, name: "Item 3" },
-    { id: 7, name: "Item 1" },
-    { id: 8, name: "Item 2" },
-    { id: 9, name: "Item 3" },
-    { id: 10, name: "Item 1" },
-    { id: 11, name: "Item 2" },
-    { id: 12, name: "Item 3" },
-    { id: 13, name: "Item 1" },
-    { id:14, name: "Item 2" },
-    { id: 15, name: "Item 3" },
+    { id: 4, name: "Item 4" },
+    { id: 5, name: "Item 5" },
+    { id: 6, name: "Item 6" },
+    { id: 7, name: "Item 7" },
+    { id: 8, name: "Item 8" },
+    { id: 9, name: "Item 9" },
+    { id: 10, name: "Item 10" },
+    { id: 11, name: "Item 11" },
+    { id: 12, name: "Item 12" },
+    { id: 13, name: "Item 13" },
+    { id: 14, name: "Item 14" },
+    { id: 15, name: "Item 15" },
 
     // Add more items as needed
   ];
@@ -45,7 +64,7 @@ const Vconnect = () => {
       setCheckedItems(checkedItems.filter((id) => id !== itemId));
     }
   };
-  
+
   const saveCheckedItems = () => {
     const itemsToAdd = checkedItems.map((id) =>
       initialItems.find((item) => item.id === id)
@@ -61,7 +80,7 @@ const Vconnect = () => {
     workday: workday,
     salesforce: salesforce,
   };
-  
+
   const [sbox, setsboxdata] = useState({ source: null, destination: null });
   const { source } = sbox;
   const { destination } = sbox;
@@ -129,19 +148,18 @@ const Vconnect = () => {
         <div className="dragndrop">
           <div className="sourdes">
             <div className="sourboxextn">
-            <div
-              className="sourcebox"
-              onDrop={(e) => handleondrop(e, "source")}
-              onDragOver={handledragover}
-            >
-              {source ? (
-                <img src={logoImages[source]} className="vjlogo" />
-              ) : (
-                "Select Source"
-              )}
-              
-            </div>
-            <button className="viewfields" onClick={toggleAdditionalDiv}>
+              <div
+                className="sourcebox"
+                onDrop={(e) => handleondrop(e, "source")}
+                onDragOver={handledragover}
+              >
+                {source ? (
+                  <img src={logoImages[source]} className="vjlogo" />
+                ) : (
+                  "Select Source"
+                )}
+              </div>
+              <button className="viewfields" onClick={toggleAdditionalDiv}>
                 <img className="eye" src={view} alt="View" />
               </button>
             </div>
@@ -155,9 +173,7 @@ const Vconnect = () => {
                   <img src={logoImages[destination]} className="vjlogo" />
                 ) : (
                   "Select Destination"
-                  
                 )}
-                
               </div>
               <button className="viewfields" onClick={toggleAdditionalDiv}>
                 <img className="eye" src={view} alt="View" />
@@ -166,73 +182,71 @@ const Vconnect = () => {
           </div>
           <div className="sourdesdata">
             <div className="sddmain">
-            <div className="sourcefields">
-            {savedItems.map((item, index) => (
-  <div
-    key={item.id}
-    style={{
-      paddingLeft: '20px',
-      fontWeight: 'bold',
-      backgroundColor: index % 2 === 0 ? 'lightgray' : 'white',
-      height:'30px'
-    }}
-  >
-    {item.name}
-  </div>
-))}
-            </div>
+              <div className="sourcefields">
+                <table className="sourcefieldtable">
+                  <th>Source Fields</th>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="sdropdown1" handleSelections={handleSelections}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="sdropdown2" handleSelections={handleSelections}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="sdropdown3" handleSelections={handleSelections}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="sdropdown4" handleSelections={handleSelections}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="sdropdown5" handleSelections={handleSelections}/>
+                    </td>
+                  </tr>
+                </table>
+              </div>
               <div className="destfields">
-
+                <table className="destfieldtable">
+                  <th>Destination Fields</th>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="dropdown1" handleSelection={handleSelection}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="dropdown2" handleSelection={handleSelection}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="dropdown3" handleSelection={handleSelection}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="dropdown4" handleSelection={handleSelection}/>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <DropdownComponent items={initialItems} dropdownId="dropdown5" handleSelection={handleSelection}/>
+                    </td>
+                  </tr>
+                </table>
               </div>
-              </div>
-              <div className="btnsds">
-
-              </div>
+            </div>
+            <div className="btnsds"></div>
           </div>
         </div>
       </div>
-      {showAdditionalDiv && (
-        <div className="additional-div">
-          <div className="navbarhead">Fields Data</div>
-          <div className="datadiv">
-            <ul className="ull" style={{ listStyleType: "none", padding: 0 }}>
-              {initialItems.map((item) => (
-                <div
-                  className="dataa"
-                  style={{
-                    backgroundColor: item.id % 2 === 0 ? "white" : "#F2F1EB",
-                  }}
-                >
-                  <div>
-                    <li
-                      key={item.id}
-                      style={{ fontSize: "18px", marginBottom: "10px" }}
-                      checked={checkedItems.includes(item.id)}
-                      onChange={() => handleCheckboxChange(item.id)}
-                    >
-                      <input type="checkbox" id={`item-${item.id}`} />
-                      <label
-                        htmlFor={`item-${item.id}`}
-                        style={{ marginLeft: "8px" }}
-                      >
-                        {item.name}
-                      </label>
-                    </li>
-                  </div>
-                </div>
-              ))}
-            </ul>
-          </div>
-          <div className="btncnt">
-            <button className="save34" onClick={saveCheckedItems}>
-              Save
-            </button>
-            <button className="del62" onClick={toggleAdditionalDiv}>
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
