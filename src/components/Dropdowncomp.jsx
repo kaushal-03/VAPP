@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function DropdownComponent({ items,dropdownId,value,handleSelection,handleSelections }) {
+function DropdownComponent({ items,dropdownId,value,handleSelection,handleSelections  }) {
   const [selectedValue, setSelectedValue] = useState('');
   
   const handleDropdownChange = (event) => {

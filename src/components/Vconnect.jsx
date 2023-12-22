@@ -24,17 +24,7 @@ const Vconnect = () => {
       [dropdownId]: value,
     }));
   };
-  useEffect(() => {
-  console.log(selectedDropdownValues)
-  console.log(selectedSDropdownValues)
-  }, [selectedDropdownValues,selectedSDropdownValues]);
-  const [showAdditionalDiv, setShowAdditionalDiv] = useState(false);
-  const toggleAdditionalDiv = () => {
-    setShowAdditionalDiv(!showAdditionalDiv);
-  };
-  const [checkedItems, setCheckedItems] = useState([]);
-  const [savedItems, setSavedItems] = useState([]);
-  const initialItems = [
+    const initialItems = [
     { id: 1, name: "Item 1" },
     { id: 2, name: "Item 2" },
     { id: 3, name: "Item 3" },
@@ -53,6 +43,104 @@ const Vconnect = () => {
 
     // Add more items as needed
   ];
+  const [dropdownComponents, setDropdownComponents] = useState([
+    {
+      id: 1,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'sdropdown1',
+      handleSelections: handleSelections,
+    },
+    {
+      id: 2,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'sdropdown2',
+      handleSelections: handleSelections,
+    },
+    // ... Add three more initial DropdownComponent configurations
+    {
+      id: 3,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'sdropdown3',
+      handleSelections: handleSelections,
+    },
+    {
+      id: 4,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'sdropdown4',
+      handleSelections: handleSelections,
+    },
+    {
+      id: 5,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'sdropdown5',
+      handleSelections: handleSelections,
+    },
+  ]);
+  const [ddropdownComponents, setDDropdownComponents] = useState([
+    {
+      id: 1,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'dropdown1',
+      handleSelection: handleSelection,
+    },
+    {
+      id: 2,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'dropdown2',
+      handleSelection: handleSelection,
+    },
+    // ... Add three more initial DropdownComponent configurations
+    {
+      id: 3,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'dropdown3',
+      handleSelection: handleSelection,
+    },
+    {
+      id: 4,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'dropdown4',
+      handleSelection: handleSelection,
+    },
+    {
+      id: 5,
+      items: initialItems, // assuming initialItems is defined
+      dropdownId: 'dropdown5',
+      handleSelection: handleSelection,
+    },
+  ]);
+  const addNewDDropdownComponent = () => {
+    const newDComponent = {
+      id: ddropdownComponents.length + 1,
+      items: initialItems, // You can pass the necessary props here
+      dropdownId: `dropdown${ddropdownComponents.length + 1}`,
+      handleSelection: handleSelection,
+    };
+
+    setDDropdownComponents([...ddropdownComponents, newDComponent]);
+  };
+  const addNewDropdownComponent = () => {
+    const newComponent = {
+      id: dropdownComponents.length + 1,
+      items: initialItems, // You can pass the necessary props here
+      dropdownId: `sdropdown${dropdownComponents.length + 1}`,
+      handleSelections: handleSelections,
+    };
+
+    setDropdownComponents([...dropdownComponents, newComponent]);
+  };
+  
+  useEffect(() => {
+  console.log(selectedDropdownValues)
+  console.log(selectedSDropdownValues)
+  }, [selectedDropdownValues,selectedSDropdownValues]);
+  const [showAdditionalDiv, setShowAdditionalDiv] = useState(false);
+  const toggleAdditionalDiv = () => {
+    setShowAdditionalDiv(!showAdditionalDiv);
+  };
+  const [checkedItems, setCheckedItems] = useState([]);
+  const [savedItems, setSavedItems] = useState([]);
+
   // Function to handle checkbox changes
   const handleCheckboxChange = (itemId) => {
     const isChecked = checkedItems.includes(itemId);
@@ -183,64 +271,26 @@ const Vconnect = () => {
           <div className="sourdesdata">
             <div className="sddmain">
               <div className="sourcefields">
-                <table className="sourcefieldtable">
-                  <th>Source Fields</th>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="sdropdown1" handleSelections={handleSelections}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="sdropdown2" handleSelections={handleSelections}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="sdropdown3" handleSelections={handleSelections}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="sdropdown4" handleSelections={handleSelections}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="sdropdown5" handleSelections={handleSelections}/>
-                    </td>
-                  </tr>
-                </table>
+                <button onClick={addNewDropdownComponent}>Add New Field</button>
+              {dropdownComponents.map((component) => (
+        <DropdownComponent
+          key={component.id}
+          items={component.items}
+          dropdownId={component.dropdownId}
+          handleSelections={component.handleSelections}
+        />
+      ))}
               </div>
               <div className="destfields">
-                <table className="destfieldtable">
-                  <th>Destination Fields</th>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="dropdown1" handleSelection={handleSelection}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="dropdown2" handleSelection={handleSelection}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="dropdown3" handleSelection={handleSelection}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="dropdown4" handleSelection={handleSelection}/>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <DropdownComponent items={initialItems} dropdownId="dropdown5" handleSelection={handleSelection}/>
-                    </td>
-                  </tr>
-                </table>
+              <button onClick={addNewDDropdownComponent}>Add New Field</button>
+              {ddropdownComponents.map((component) => (
+        <DropdownComponent
+          key={component.id}
+          items={component.items}
+          dropdownId={component.dropdownId}
+          handleSelection={component.handleSelection}
+        />
+      ))}
               </div>
             </div>
             <div className="btnsds"></div>
