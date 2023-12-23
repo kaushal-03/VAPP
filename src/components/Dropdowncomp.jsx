@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-
+import './Dropdowncomp.css';
 function DropdownComponent({ items,dropdownId,value,handleSelection,handleSelections  }) {
   const [selectedValue, setSelectedValue] = useState('');
-  
   const handleDropdownChange = (event) => {
     const value = event.target.value;
     setSelectedValue(event.target.value);
@@ -14,8 +13,8 @@ function DropdownComponent({ items,dropdownId,value,handleSelection,handleSelect
 
   return (
     <div>
-      <select value={selectedValue} onChange={handleDropdownChange}>
-        <option value="">Select an option</option>
+      <select value={selectedValue} onChange={handleDropdownChange} className='dropdowncmp'>
+        <option value="" >Select The Field</option>
         {items.map((item) => (
           <option key={item.id} value={item.name}>
             {item.name}

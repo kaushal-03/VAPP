@@ -7,7 +7,10 @@ import salesforce from "../salesforce-logo-cloudcon.png";
 import workday from "../workday.png";
 import Aicon from "../Aicon.png";
 import view from "../view.png";
-import './Dropdowncomp';
+import plus from "../plus.png"
+import "./Dropdowncomp";
+import { toast,ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import DropdownComponent from "./Dropdowncomp";
 const Vconnect = () => {
   const [selectedDropdownValues, setSelectedDropdownValues] = useState({});
@@ -24,7 +27,7 @@ const Vconnect = () => {
       [dropdownId]: value,
     }));
   };
-    const initialItems = [
+  const initialItems = [
     { id: 1, name: "Item 1" },
     { id: 2, name: "Item 2" },
     { id: 3, name: "Item 3" },
@@ -47,32 +50,32 @@ const Vconnect = () => {
     {
       id: 1,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'sdropdown1',
+      dropdownId: "sdropdown1",
       handleSelections: handleSelections,
     },
     {
       id: 2,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'sdropdown2',
+      dropdownId: "sdropdown2",
       handleSelections: handleSelections,
     },
     // ... Add three more initial DropdownComponent configurations
     {
       id: 3,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'sdropdown3',
+      dropdownId: "sdropdown3",
       handleSelections: handleSelections,
     },
     {
       id: 4,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'sdropdown4',
+      dropdownId: "sdropdown4",
       handleSelections: handleSelections,
     },
     {
       id: 5,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'sdropdown5',
+      dropdownId: "sdropdown5",
       handleSelections: handleSelections,
     },
   ]);
@@ -80,36 +83,38 @@ const Vconnect = () => {
     {
       id: 1,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'dropdown1',
+      dropdownId: "dropdown1",
       handleSelection: handleSelection,
     },
     {
       id: 2,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'dropdown2',
+      dropdownId: "dropdown2",
       handleSelection: handleSelection,
     },
     // ... Add three more initial DropdownComponent configurations
     {
       id: 3,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'dropdown3',
+      dropdownId: "dropdown3",
       handleSelection: handleSelection,
     },
     {
       id: 4,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'dropdown4',
+      dropdownId: "dropdown4",
       handleSelection: handleSelection,
     },
     {
       id: 5,
       items: initialItems, // assuming initialItems is defined
-      dropdownId: 'dropdown5',
+      dropdownId: "dropdown5",
       handleSelection: handleSelection,
     },
   ]);
   const addNewDDropdownComponent = () => {
+    if(destination===null){ toast.error('Check Source or Destination');}
+    else{
     const newDComponent = {
       id: ddropdownComponents.length + 1,
       items: initialItems, // You can pass the necessary props here
@@ -117,9 +122,11 @@ const Vconnect = () => {
       handleSelection: handleSelection,
     };
 
-    setDDropdownComponents([...ddropdownComponents, newDComponent]);
+    setDDropdownComponents([...ddropdownComponents, newDComponent]);toast.success('Field Added');}
   };
   const addNewDropdownComponent = () => {
+    if(source===null){toast.error('Check Source or Destination');}
+    else{
     const newComponent = {
       id: dropdownComponents.length + 1,
       items: initialItems, // You can pass the necessary props here
@@ -127,13 +134,13 @@ const Vconnect = () => {
       handleSelections: handleSelections,
     };
 
-    setDropdownComponents([...dropdownComponents, newComponent]);
+    setDropdownComponents([...dropdownComponents, newComponent]);toast.success('Field Added');}
   };
-  
+
   useEffect(() => {
-  console.log(selectedDropdownValues)
-  console.log(selectedSDropdownValues)
-  }, [selectedDropdownValues,selectedSDropdownValues]);
+    console.log(selectedDropdownValues);
+    console.log(selectedSDropdownValues);
+  }, [selectedDropdownValues, selectedSDropdownValues]);
   const [showAdditionalDiv, setShowAdditionalDiv] = useState(false);
   const toggleAdditionalDiv = () => {
     setShowAdditionalDiv(!showAdditionalDiv);
@@ -235,7 +242,7 @@ const Vconnect = () => {
         </div>
         <div className="dragndrop">
           <div className="sourdes">
-            <div className="sourboxextn">
+            
               <div
                 className="sourcebox"
                 onDrop={(e) => handleondrop(e, "source")}
@@ -247,11 +254,8 @@ const Vconnect = () => {
                   "Select Source"
                 )}
               </div>
-              <button className="viewfields" onClick={toggleAdditionalDiv}>
-                <img className="eye" src={view} alt="View" />
-              </button>
-            </div>
-            <div className="desboxextn">
+              
+            
               <div
                 className="desbox"
                 onDragOver={handledragover}
@@ -263,27 +267,31 @@ const Vconnect = () => {
                   "Select Destination"
                 )}
               </div>
-              <button className="viewfields" onClick={toggleAdditionalDiv}>
-                <img className="eye" src={view} alt="View" />
-              </button>
-            </div>
+              
+            
           </div>
           <div className="sourdesdata">
             <div className="sddmain">
               <div className="sourcefields">
-                <button onClick={addNewDropdownComponent}>Add New Field</button>
-              {dropdownComponents.map((component) => (
-        <DropdownComponent
-          key={component.id}
-          items={component.items}
-          dropdownId={component.dropdownId}
-          handleSelections={component.handleSelections}
-        />
-      ))}
+                <div className="btnsrcf"><button onClick={addNewDropdownComponent} className="fldbtn"><img className="pluss"src={plus}/>Add New Field</button></div>
+                <div>{dropdownComponents.map((component) => (
+                  <DropdownComponent
+                    key={component.id}
+                    items={component.items}
+                    dropdownId={component.dropdownId}
+                    handleSelections={component.handleSelections}
+                  />
+                ))}
+                </div>
               </div>
               <div className="destfields">
-              <button onClick={addNewDDropdownComponent}>Add New Field</button>
-              {ddropdownComponents.map((component) => (
+              <div className="btnsrcf">
+      <button onClick={addNewDDropdownComponent} className="fldbtn">
+        <img className="pluss" src={plus} /> Add New Field
+      </button>
+    </div>
+    <div>
+      {ddropdownComponents.map((component) => (
         <DropdownComponent
           key={component.id}
           items={component.items}
@@ -291,6 +299,7 @@ const Vconnect = () => {
           handleSelection={component.handleSelection}
         />
       ))}
+    </div>
               </div>
             </div>
             <div className="btnsds"></div>

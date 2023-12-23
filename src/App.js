@@ -13,7 +13,7 @@ import Licensetab from './components/Licensetab';
 import Vconnect from './components/Vconnect';
 import Useradmin from './components/Useradmin';
 import SAP from './components/SAP';
-
+import { ToastContainer } from 'react-toastify';
 function App() {
   const divStyle = {
     width: '100%', 
@@ -21,6 +21,7 @@ function App() {
   };
   return (
    <div className='main'>
+     <ToastContainer />
     <Router>
       <Routes>
       <Route path="/" element={<div className='main' style={divStyle}><Navbar/><Homepage/></div>} />
