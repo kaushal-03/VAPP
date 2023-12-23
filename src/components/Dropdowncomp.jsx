@@ -12,7 +12,8 @@ function DropdownComponent({ items,dropdownId,value,handleSelection,handleSelect
   };
 
   return (
-    <div>
+    <div className='dddwn'>
+      <div className='cdwn'>
       <select value={selectedValue} onChange={handleDropdownChange} className='dropdowncmp'>
         <option value="" >Select The Field</option>
         {items.map((item) => (
@@ -21,7 +22,7 @@ function DropdownComponent({ items,dropdownId,value,handleSelection,handleSelect
           </option>
         ))}
       </select>
-     
+      </div>
     </div>
   );
 }

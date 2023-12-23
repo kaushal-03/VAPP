@@ -7,11 +7,14 @@ import salesforce from "../salesforce-logo-cloudcon.png";
 import workday from "../workday.png";
 import Aicon from "../Aicon.png";
 import view from "../view.png";
-import plus from "../plus.png"
+import plus from "../plus.png";
 import "./Dropdowncomp";
-import { toast,ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import DropdownComponent from "./Dropdowncomp";
+import GridTable from '@nadavshaar/react-grid-table';
+import cross from '../cross.png';
+
 const Vconnect = () => {
   const [selectedDropdownValues, setSelectedDropdownValues] = useState({});
   const [selectedSDropdownValues, setSelectedSDropdownValues] = useState({});
@@ -27,25 +30,25 @@ const Vconnect = () => {
       [dropdownId]: value,
     }));
   };
-  const initialItems = [
-    { id: 1, name: "Item 1" },
-    { id: 2, name: "Item 2" },
-    { id: 3, name: "Item 3" },
-    { id: 4, name: "Item 4" },
-    { id: 5, name: "Item 5" },
-    { id: 6, name: "Item 6" },
-    { id: 7, name: "Item 7" },
-    { id: 8, name: "Item 8" },
-    { id: 9, name: "Item 9" },
-    { id: 10, name: "Item 10" },
-    { id: 11, name: "Item 11" },
-    { id: 12, name: "Item 12" },
-    { id: 13, name: "Item 13" },
-    { id: 14, name: "Item 14" },
-    { id: 15, name: "Item 15" },
+    const initialItems = [
+      { id: 1, name: "Item 1" },
+      { id: 2, name: "Item 2" },
+      { id: 3, name: "Item 3" },
+      { id: 4, name: "Item 4" },
+      { id: 5, name: "Item 5" },
+      { id: 6, name: "Item 6" },
+      { id: 7, name: "Item 7" },
+      { id: 8, name: "Item 8" },
+      { id: 9, name: "Item 9" },
+      { id: 10, name: "Item 10" },
+      { id: 11, name: "Item 11" },
+      { id: 12, name: "Item 12" },
+      { id: 13, name: "Item 13" },
+      { id: 14, name: "Item 14" },
+      { id: 15, name: "Item 15" },
 
-    // Add more items as needed
-  ];
+      // Add more items as needed
+    ];
   const [dropdownComponents, setDropdownComponents] = useState([
     {
       id: 1,
@@ -112,31 +115,55 @@ const Vconnect = () => {
       handleSelection: handleSelection,
     },
   ]);
-  const addNewDDropdownComponent = () => {
-    if(destination===null){ toast.error('Check Source or Destination');}
-    else{
-    const newDComponent = {
-      id: ddropdownComponents.length + 1,
-      items: initialItems, // You can pass the necessary props here
-      dropdownId: `dropdown${ddropdownComponents.length + 1}`,
-      handleSelection: handleSelection,
-    };
+  
 
-    setDDropdownComponents([...ddropdownComponents, newDComponent]);toast.success('Field Added');}
+  const addNewDDropdownComponent = () => {
+ 
+      
+    
+      const newDComponent = {
+        id: ddropdownComponents.length + 1,
+        items: initialItems, // You can pass the necessary props here
+        dropdownId: `dropdown${ddropdownComponents.length + 1}`,
+        handleSelection: handleSelection,
+      };
+
+      setDDropdownComponents([...ddropdownComponents, newDComponent]);
+      
   };
   const addNewDropdownComponent = () => {
-    if(source===null){toast.error('Check Source or Destination');}
-    else{
-    const newComponent = {
-      id: dropdownComponents.length + 1,
-      items: initialItems, // You can pass the necessary props here
-      dropdownId: `sdropdown${dropdownComponents.length + 1}`,
-      handleSelections: handleSelections,
-    };
+    
+      const newComponent = {
+        id: dropdownComponents.length + 1,
+        items: initialItems, // You can pass the necessary props here
+        dropdownId: `sdropdown${dropdownComponents.length + 1}`,
+        handleSelections: handleSelections,
+      };
 
-    setDropdownComponents([...dropdownComponents, newComponent]);toast.success('Field Added');}
+      setDropdownComponents([...dropdownComponents, newComponent]);
+      
+    
   };
-
+  const addcmpboth = ()=>
+  {
+    if(source != null && destination != null){
+    addNewDDropdownComponent();
+    addNewDropdownComponent();
+    toast.success("Field Added")
+    }
+    else
+    {
+      toast.error("Check Source/Destination")
+    }
+  }
+  const DropdownCell = ({ id, items, dropdownId, handleSelection }) => (
+    <DropdownComponent
+      key={id}
+      items={items}
+      dropdownId={dropdownId}
+      handleSelection={handleSelection}
+    />
+  );
   useEffect(() => {
     console.log(selectedDropdownValues);
     console.log(selectedSDropdownValues);
@@ -204,6 +231,8 @@ const Vconnect = () => {
   useEffect(() => {
     console.log(sbox); // Log the updated state whenever sbox changes
   }, [sbox]);
+ 
+
   return (
     <div className="vmain">
       <div className="vnav">Vconnect</div>
@@ -242,67 +271,96 @@ const Vconnect = () => {
         </div>
         <div className="dragndrop">
           <div className="sourdes">
-            
-              <div
-                className="sourcebox"
-                onDrop={(e) => handleondrop(e, "source")}
-                onDragOver={handledragover}
-              >
-                {source ? (
-                  <img src={logoImages[source]} className="vjlogo" />
-                ) : (
-                  "Select Source"
-                )}
-              </div>
-              
-            
-              <div
-                className="desbox"
-                onDragOver={handledragover}
-                onDrop={(e) => handleondrop(e, "dest")}
-              >
-                {destination ? (
-                  <img src={logoImages[destination]} className="vjlogo" />
-                ) : (
-                  "Select Destination"
-                )}
-              </div>
-              
-            
+            <div
+              className="sourcebox"
+              onDrop={(e) => handleondrop(e, "source")}
+              onDragOver={handledragover}
+            >
+              {source ? (
+                <img src={logoImages[source]} className="vjlogo" />
+              ) : (
+                "Select Source"
+              )}
+            </div>
+
+            <div
+              className="desbox"
+              onDragOver={handledragover}
+              onDrop={(e) => handleondrop(e, "dest")}
+            >
+              {destination ? (
+                <img src={logoImages[destination]} className="vjlogo" />
+              ) : (
+                "Select Destination"
+              )}
+            </div>
           </div>
+          <div className="ctrlbtns" style={{display:'flex',gap:'20px'}}>
+            <button onClick={addcmpboth} className="fldbtn">
+            <img className="pluss" src={plus} /> Add Field
+            </button>
+            <button  className="rfldbtn">
+            <img className="pluss" src={cross} /> Delete Field
+            </button>
+            </div>
           <div className="sourdesdata">
             <div className="sddmain">
-              <div className="sourcefields">
-                <div className="btnsrcf"><button onClick={addNewDropdownComponent} className="fldbtn"><img className="pluss"src={plus}/>Add New Field</button></div>
-                <div>{dropdownComponents.map((component) => (
-                  <DropdownComponent
-                    key={component.id}
-                    items={component.items}
-                    dropdownId={component.dropdownId}
-                    handleSelections={component.handleSelections}
-                  />
-                ))}
-                </div>
-              </div>
+            <div className="sourcefields">
+                <table style={{width:'100%'}}>
+                  <tr>
+                    <th style={{fontWeight:'10'}}>Source Fields</th>
+                  </tr>
+                  {dropdownComponents.map((component) => (
+                    <tr>
+                    <div style={{ display: 'flex', alignItems: 'center' ,gap:'8px',width:'100%',backgroundColor:'white',borderBottom: '1px solid black'}}>
+                      <input
+                        type="checkbox"
+                        onChange={(e) => handleCheckboxChange(component.id)}
+                        checked={checkedItems.includes(component.id)}
+                        style={{ height:'20px' }}
+                      />
+                      <DropdownComponent
+                        key={component.id}
+                        items={component.items}
+                        dropdownId={component.dropdownId}
+                        handleSelections={component.handleSelections}
+                        className="ddrrcmp"
+                        
+                      />
+                    </div>
+                  </tr>
+                  ))}
+                </table>
+            </div>
               <div className="destfields">
-              <div className="btnsrcf">
-      <button onClick={addNewDDropdownComponent} className="fldbtn">
-        <img className="pluss" src={plus} /> Add New Field
-      </button>
-    </div>
-    <div>
-      {ddropdownComponents.map((component) => (
-        <DropdownComponent
-          key={component.id}
-          items={component.items}
-          dropdownId={component.dropdownId}
-          handleSelection={component.handleSelection}
-        />
-      ))}
-    </div>
+              <table style={{width:'100%' }}>
+                  <tr>
+                    <th style={{fontWeight:'10'}}>Destination Fields</th>
+                  </tr>
+                  {ddropdownComponents.map((component) => (
+                    <tr>
+                    <div style={{ display: 'flex', alignItems: 'center' ,gap:'8px',width:'100%',backgroundColor:'white',borderBottom: '1px solid black'}}>
+                      <input
+                        type="checkbox"
+                        onChange={(e) => handleCheckboxChange(component.id)}
+                        checked={checkedItems.includes(component.id)}
+                        style={{ height:'20px' }}
+                      />
+                      <DropdownComponent
+                        key={component.id}
+                        items={component.items}
+                        dropdownId={component.dropdownId}
+                        handleSelection={component.handleSelection}
+                        className="ddrrcmp"
+                        
+                      />
+                    </div>
+                  </tr>
+                  ))}
+                </table>
               </div>
             </div>
-            <div className="btnsds"></div>
+            
           </div>
         </div>
       </div>
